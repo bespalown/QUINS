@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66155F8B1980F70C0017888E /* DMCircularScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66155F8A1980F70C0017888E /* DMCircularScrollView.m */; };
+		66155F90198116770017888E /* Weight.m in Sources */ = {isa = PBXBuildFile; fileRef = 66155F8F198116770017888E /* Weight.m */; };
+		66155F931981173E0017888E /* WeightData.m in Sources */ = {isa = PBXBuildFile; fileRef = 66155F921981173E0017888E /* WeightData.m */; };
 		6661DCF519804C6E00FB0D30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6661DCF419804C6E00FB0D30 /* Foundation.framework */; };
 		6661DCF719804C6E00FB0D30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6661DCF619804C6E00FB0D30 /* CoreGraphics.framework */; };
 		6661DCF919804C6E00FB0D30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6661DCF819804C6E00FB0D30 /* UIKit.framework */; };
@@ -21,6 +24,7 @@
 		6661DD1619804C6E00FB0D30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6661DCF819804C6E00FB0D30 /* UIKit.framework */; };
 		6661DD1E19804C6E00FB0D30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6661DD1C19804C6E00FB0D30 /* InfoPlist.strings */; };
 		6661DD2019804C6E00FB0D30 /* QuinsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6661DD1F19804C6E00FB0D30 /* QuinsTests.m */; };
+		8BFF9591A6C24212AE174452 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1193755E47E42BB8830BFD7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3633A9CBDC0C4340BACD5111 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		66155F891980F70C0017888E /* DMCircularScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCircularScrollView.h; sourceTree = "<group>"; };
+		66155F8A1980F70C0017888E /* DMCircularScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCircularScrollView.m; sourceTree = "<group>"; };
+		66155F8E198116770017888E /* Weight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weight.h; path = Models/Weight.h; sourceTree = "<group>"; };
+		66155F8F198116770017888E /* Weight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Weight.m; path = Models/Weight.m; sourceTree = "<group>"; };
+		66155F911981173E0017888E /* WeightData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightData.h; path = MockData/WeightData.h; sourceTree = "<group>"; };
+		66155F921981173E0017888E /* WeightData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightData.m; path = MockData/WeightData.m; sourceTree = "<group>"; };
 		6661DCF119804C6D00FB0D30 /* Quins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6661DCF419804C6E00FB0D30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6661DCF619804C6E00FB0D30 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +64,7 @@
 		6661DD1B19804C6E00FB0D30 /* QuinsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuinsTests-Info.plist"; sourceTree = "<group>"; };
 		6661DD1D19804C6E00FB0D30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6661DD1F19804C6E00FB0D30 /* QuinsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuinsTests.m; sourceTree = "<group>"; };
+		D1193755E47E42BB8830BFD7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +75,7 @@
 				6661DCF719804C6E00FB0D30 /* CoreGraphics.framework in Frameworks */,
 				6661DCF919804C6E00FB0D30 /* UIKit.framework in Frameworks */,
 				6661DCF519804C6E00FB0D30 /* Foundation.framework in Frameworks */,
+				8BFF9591A6C24212AE174452 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +92,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66155F8C1981163C0017888E /* CircularScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				66155F891980F70C0017888E /* DMCircularScrollView.h */,
+				66155F8A1980F70C0017888E /* DMCircularScrollView.m */,
+			);
+			name = CircularScrollView;
+			sourceTree = "<group>";
+		};
+		66155F8D198116530017888E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66155F8E198116770017888E /* Weight.h */,
+				66155F8F198116770017888E /* Weight.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		66155F94198117460017888E /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				66155F911981173E0017888E /* WeightData.h */,
+				66155F921981173E0017888E /* WeightData.m */,
+			);
+			name = MockData;
+			sourceTree = "<group>";
+		};
 		6661DCE819804C6D00FB0D30 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +126,7 @@
 				6661DD1919804C6E00FB0D30 /* QuinsTests */,
 				6661DCF319804C6D00FB0D30 /* Frameworks */,
 				6661DCF219804C6D00FB0D30 /* Products */,
+				3633A9CBDC0C4340BACD5111 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +146,7 @@
 				6661DCF619804C6E00FB0D30 /* CoreGraphics.framework */,
 				6661DCF819804C6E00FB0D30 /* UIKit.framework */,
 				6661DD1319804C6E00FB0D30 /* XCTest.framework */,
+				D1193755E47E42BB8830BFD7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,6 +159,9 @@
 				6661DD0619804C6E00FB0D30 /* Main.storyboard */,
 				6661DD0919804C6E00FB0D30 /* ViewController.h */,
 				6661DD0A19804C6E00FB0D30 /* ViewController.m */,
+				66155F94198117460017888E /* MockData */,
+				66155F8D198116530017888E /* Models */,
+				66155F8C1981163C0017888E /* CircularScrollView */,
 				6661DD0C19804C6E00FB0D30 /* Images.xcassets */,
 				6661DCFB19804C6E00FB0D30 /* Supporting Files */,
 			);
@@ -159,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6661DD2319804C6E00FB0D30 /* Build configuration list for PBXNativeTarget "Quins" */;
 			buildPhases = (
+				9D292D4CFCB1469FB10CB298 /* Check Pods Manifest.lock */,
 				6661DCED19804C6D00FB0D30 /* Sources */,
 				6661DCEE19804C6D00FB0D30 /* Frameworks */,
 				6661DCEF19804C6D00FB0D30 /* Resources */,
+				4265044A107E4F778CCDD85D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,13 +291,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4265044A107E4F778CCDD85D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D292D4CFCB1469FB10CB298 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6661DCED19804C6D00FB0D30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6661DD0B19804C6E00FB0D30 /* ViewController.m in Sources */,
+				66155F8B1980F70C0017888E /* DMCircularScrollView.m in Sources */,
 				6661DD0519804C6E00FB0D30 /* AppDelegate.m in Sources */,
+				66155F931981173E0017888E /* WeightData.m in Sources */,
+				66155F90198116770017888E /* Weight.m in Sources */,
 				6661DD0119804C6E00FB0D30 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +456,7 @@
 		};
 		6661DD2419804C6E00FB0D30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3633A9CBDC0C4340BACD5111 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -386,6 +470,7 @@
 		};
 		6661DD2519804C6E00FB0D30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3633A9CBDC0C4340BACD5111 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -456,6 +541,7 @@
 				6661DD2519804C6E00FB0D30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6661DD2619804C6E00FB0D30 /* Build configuration list for PBXNativeTarget "QuinsTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +550,7 @@
 				6661DD2819804C6E00FB0D30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

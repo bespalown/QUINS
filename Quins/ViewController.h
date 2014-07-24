@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRSDialScrollView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @end
