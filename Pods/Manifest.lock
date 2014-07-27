@@ -1,0 +1,10 @@
+PODS:
+  - TRSDialScrollView (1.0.7)
+
+DEPENDENCIES:
+  - TRSDialScrollView (>= 1.0)
+
+SPEC CHECKSUMS:
+  TRSDialScrollView: 77e6fc03cffd0d4bbcf331d4103c88a5bbca2b6b
+
+COCOAPODS: 0.33.1
