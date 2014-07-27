@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="вводим вес" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9wE-gx-Hrk">
-                                <rect key="frame" x="20" y="144" width="280" height="30"/>
+                                <rect key="frame" x="20" y="293" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -26,7 +26,7 @@
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dGh-vR-sve">
-                                <rect key="frame" x="0.0" y="58" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="83" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="LUr-xS-UN9"/>
@@ -34,7 +34,12 @@
                                 </connections>
                             </pickerView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yxk-dm-Ymq" customClass="TRSDialScrollView">
-                                <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-sn-rQB" customClass="TRSDialScrollView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -43,6 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="dialView" destination="Yxk-dm-Ymq" id="B0m-Ju-AAf"/>
+                        <outlet property="dialViewPound" destination="fWn-sn-rQB" id="AdT-Cz-IQy"/>
                         <outlet property="pickerView" destination="dGh-vR-sve" id="Byo-RC-w0h"/>
                         <outlet property="textField" destination="9wE-gx-Hrk" id="hLY-PC-UAX"/>
                     </connections>

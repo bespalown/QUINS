@@ -14,24 +14,26 @@
 -(NSArray *)getWeight
 {
     Weight* weightGr = [Weight new];
-    weightGr.name = @"килограммов";
-    weightGr.ratio = 1;
-    weightGr.type = kg;
+    weightGr.name = @"грамм";
+    weightGr.type = gr;
     
-    Weight* weightKG = [Weight new];
-    weightKG.name = @"граммов";
-    weightKG.ratio = 1000;
-    weightKG.type = gr;
+    Weight* weightML = [Weight new];
+    weightML.name = @"миллилитров";
+    weightML.type = milliliter;
     
-    Weight* weightmGr = [Weight new];
-    weightmGr.name = @"миллиграммов";
-    weightmGr.ratio = 0.001;
-    weightmGr.type = mgr;
+    Weight* weightmP = [Weight new];
+    weightmP.name = @"фунтов";
+    weightmP.type = pound;
+    
+    Weight* weightmO = [Weight new];
+    weightmO.name = @"унций";
+    weightmO.type = ounce;
     
     NSMutableArray* arr = [NSMutableArray new];
     [arr addObject:weightGr];
-    [arr addObject:weightKG];
-    [arr addObject:weightmGr];
+    [arr addObject:weightML];
+    [arr addObject:weightmP];
+    [arr addObject:weightmO];
     
     return arr;
 }

@@ -14,9 +14,10 @@
 
 typedef enum
 {
-    kg,
     gr,
-    mgr
+    milliliter,
+    ounce,
+    pound
 } typeWeight;
 
 @property (nonatomic, strong) NSString* name;

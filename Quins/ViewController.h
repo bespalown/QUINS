@@ -12,7 +12,9 @@
 @interface ViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet TRSDialScrollView *dialView;
+@property (weak, nonatomic) IBOutlet TRSDialScrollView *dialViewPound;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+
 
 @end

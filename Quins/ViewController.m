@@ -40,13 +40,52 @@
     //base init
     dataPicker = [NSMutableArray new];
     [dataPicker addObject:@"0"];
-    _pickerView.transform = CGAffineTransformMakeScale(0.2, 0.2);
-    //_pickerView.userInteractionEnabled = NO;
+    //_pickerView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    _pickerView.userInteractionEnabled = NO;
     
     Weight* weight = [dataArray firstObject];
     selectedWeightType = weight.type;
     
-    threePageScrollView = [[DMCircularScrollView alloc] initWithFrame:CGRectMake(10,100,300,30)];
+    _dialViewPound.alpha = 1;
+    _dialView.alpha = 0;
+    _dialView.userInteractionEnabled = _dialViewPound.userInteractionEnabled = NO;
+    
+    ///
+    
+    [[TRSDialScrollView appearance] setMinorTicksPerMajorTick:1];
+    [[TRSDialScrollView appearance] setMinorTickDistance:50];
+    
+    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor blackColor]];
+    //[[TRSDialScrollView appearance] setOverlayColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@""]]];
+    
+    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor colorWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1]];
+    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.1f];
+    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor colorWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1]];
+    
+    [[TRSDialScrollView appearance] setLabelFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12]];
+    
+    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor colorWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1]];
+    [[TRSDialScrollView appearance] setMinorTickLength:25.0];
+    [[TRSDialScrollView appearance] setMinorTickWidth:1.0];
+    
+    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor colorWithRed:69.0f/255.0f green:69.0f/255.0f blue:69.0f/255.0f alpha:1]];
+    [[TRSDialScrollView appearance] setMajorTickLength:35.0];
+    [[TRSDialScrollView appearance] setMajorTickWidth:1.0];
+    
+    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithRed:0.593 green:0.619 blue:0.643 alpha:1.000]];
+    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(0, 1)];
+    [[TRSDialScrollView appearance] setShadowBlur:0.9f];
+    
+    [_dialView setDialRangeFrom:0 to:450];
+    //_dialView.delegate = self;
+    
+    [_dialViewPound setMinorTicksPerMajorTick:5];
+    [_dialViewPound setMinorTickDistance:10];
+    
+    [_dialViewPound setDialRangeFrom:0 to:450];
+    //_dialViewPound.delegate = self;
+    
+    threePageScrollView = [[DMCircularScrollView alloc] initWithFrame:CGRectMake(10,253,300,30)];
     threePageScrollView.pageWidth = 100;
     threePageScroller_Views = [self generateSampleUIViews:3 width:100];
     [threePageScrollView setPageCount:[threePageScroller_Views count]
@@ -57,38 +96,34 @@
     threePageScrollView.handlePageChange =  ^(NSUInteger currentPageIndex,NSUInteger previousPageIndex) {
         Weight* currentWeight = [dataArray objectAtIndex:currentPageIndex];
         selectedWeightType = currentWeight.type;
+        
         [self updatePickerData:[self convertWeight:selectedWeightType selectedWeightInGr:selectedWeightInGr]];
         
-        [_dialView setCurrentValue:[self convertWeight:selectedWeightType selectedWeightInGr:selectedWeightInGr] animated:YES];
+        switch (selectedWeightType) {
+            case gr:
+                _dialView.alpha = 0;
+                _dialViewPound.alpha = 1;
+                break;
+            case milliliter:
+                _dialView.alpha = 0;
+                _dialViewPound.alpha = 1;
+                break;
+            case pound:
+                _dialView.alpha = 1;
+                _dialViewPound.alpha = 0;
+                break;
+            case ounce:
+                _dialView.alpha = 1;
+                _dialViewPound.alpha = 0;
+                break;
+            default:
+                _dialView.alpha = 1;
+                break;
+        }
+        
     };
     
     [self.view addSubview:threePageScrollView];
-    
-    //[[TRSDialScrollView appearance] setMinorTicksPerMajorTick:10];
-    //[[TRSDialScrollView appearance] setMinorTickDistance:10];
-    [[TRSDialScrollView appearance] setBackgroundColor:[UIColor blackColor]];
-    //[[TRSDialScrollView appearance] setOverlayColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"DialShadding"]]];
-    
-    [[TRSDialScrollView appearance] setLabelStrokeColor:[UIColor whiteColor]];
-    [[TRSDialScrollView appearance] setLabelStrokeWidth:0.1f];
-    [[TRSDialScrollView appearance] setLabelFillColor:[UIColor whiteColor]];
-    
-    [[TRSDialScrollView appearance] setLabelFont:[UIFont systemFontOfSize:14]];
-    
-    [[TRSDialScrollView appearance] setMinorTickColor:[UIColor whiteColor]];
-    [[TRSDialScrollView appearance] setMinorTickLength:5.0];
-    [[TRSDialScrollView appearance] setMinorTickWidth:1.0];
-    
-    [[TRSDialScrollView appearance] setMajorTickColor:[UIColor whiteColor]];
-    [[TRSDialScrollView appearance] setMajorTickLength:15.0];
-    [[TRSDialScrollView appearance] setMajorTickWidth:1.0];
-    
-    [[TRSDialScrollView appearance] setShadowColor:[UIColor colorWithRed:0.593 green:0.619 blue:0.643 alpha:1.000]];
-    [[TRSDialScrollView appearance] setShadowOffset:CGSizeMake(0, 1)];
-    [[TRSDialScrollView appearance] setShadowBlur:0.9f];
-    
-    [_dialView setDialRangeFrom:0 to:450];
-    _dialView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,17 +150,44 @@
         
         UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:[NSString stringWithFormat:@"%@", weight.name] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:12];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn setFrame:back_view.bounds];
+        //[btn setBackgroundColor:[UIColor blackColor]];
         //[btn addTarget:self action:@selector(btn_tapButton:) forControlEvents:UIControlEventTouchUpInside];
         [btn setUserInteractionEnabled:YES];
-        [btn setBackgroundColor:[ViewController randomColor]];
+        //[btn setBackgroundColor:[ViewController randomColor]];
         //back_view.backgroundColor = [DMViewController randomColor];
+        
+
         
         [back_view addSubview:btn];
         [views_list addObject: back_view];
     }
     return views_list;
+}
+
+//Blue gradient background
++ (CAGradientLayer*) blueGradient {
+    
+    UIColor *colorOne = [UIColor colorWithRed:(120/255.0) green:(135/255.0) blue:(150/255.0) alpha:1.0];
+    UIColor *colorTwo = [UIColor colorWithRed:(57/255.0)  green:(79/255.0)  blue:(96/255.0)  alpha:1.0];
+    
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
+    
+    NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    //headerLayer.locations = locations;
+    
+    //[headerLayer setStartPoint:CGPointMake(0.0, 0.5)];
+    //[headerLayer setEndPoint:CGPointMake(1.0, 0.5)];
+    //[headerLayer setShadowRadius:50];
+    
+    return headerLayer;
+    
 }
 
 - (void) btn_tapButton:(UIButton *) btn {
@@ -152,7 +214,7 @@
     if (!tView){
         tView = [[UILabel alloc] init];
         tView.text = [dataPicker objectAtIndex:row];
-        tView.font = [UIFont systemFontOfSize:100];
+        tView.font = [UIFont systemFontOfSize:50];
         tView.textColor = [UIColor whiteColor];
         [tView sizeToFit];
     }
@@ -184,32 +246,47 @@
 
 -(void)updatePickerData:(CGFloat)theFloat
 {
-    NSString* object = [NSString stringWithFormat:@"%0.3f",theFloat];
+    NSString* object = @"";
+    if (theFloat - (NSInteger)(theFloat) == 0){
+        object = [NSString stringWithFormat:@"%0.0f",theFloat];
+    }
+    else {
+        object = [NSString stringWithFormat:@"%0.3f",theFloat];
+    }
     [dataPicker addObject:object];
     
-    if (dataPicker.count > 2) {
-        //[dataPicker removeObjectAtIndex:0];
-    }
     [_pickerView reloadAllComponents];
     [_pickerView selectRow:dataPicker.count-1 inComponent:0 animated:YES];
     
+    if (theFloat > 50) {
+        [_dialView setDialRangeFrom:theFloat - 50 to:theFloat + 50];
+        [_dialViewPound setDialRangeFrom:theFloat - 100 to:theFloat + 100];
+    }
+    else if (theFloat > 0 && theFloat <= 50) {
+        [_dialView setDialRangeFrom:0 to:100];
+        [_dialViewPound setDialRangeFrom:0 to:100];
+    }
+    
     [_dialView setCurrentValue:theFloat animated:YES];
+    [_dialViewPound setCurrentValue:theFloat animated:YES];
 }
 
 -(CGFloat)convertInputWeight:(typeWeight)type selectedWeightInGr:(CGFloat)theWeight
 {
     CGFloat weight;
     switch (type) {
-        case kg:
-            weight = theWeight / 0.001;
-            break;
         case gr:
             weight = theWeight / 1;
             break;
-        case mgr:
-            weight = theWeight / 1000;
+        case milliliter:
+            weight = theWeight / 1;
             break;
-            
+        case pound: //фунт
+            weight = theWeight / 0.00220462262;
+            break;
+        case ounce: //унция
+            weight = theWeight / 0.0352739619;
+            break;
         default:
             break;
     }
@@ -221,16 +298,18 @@
 {
     CGFloat weight;
     switch (type) {
-        case kg:
-            weight = theWeight * 0.001;
-            break;
         case gr:
             weight = theWeight * 1;
             break;
-        case mgr:
-            weight = theWeight * 1000;
+        case milliliter:
+            weight = theWeight * 1;
             break;
-            
+        case pound:
+            weight = theWeight * 0.00220462262;
+            break;
+        case ounce:
+            weight = theWeight * 0.0352739619;
+            break;
         default:
             break;
     }
