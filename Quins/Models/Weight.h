@@ -21,7 +21,6 @@ typedef enum
 } typeWeight;
 
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, assign) CGFloat ratio;
 @property (nonatomic, assign) typeWeight type;
 
 @end

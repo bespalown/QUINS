@@ -69,19 +69,6 @@
         //scrollView.backgroundColor = [UIColor blueColor];
         //self.backgroundColor = [UIColor cyanColor];
         
-        /*
-        CAGradientLayer *l = [CAGradientLayer layer];
-        l.frame = scrollView.bounds;
-        l.cornerRadius = scrollView.frame.size.width/2.0f;
-        l.masksToBounds = YES;
-        l.colors = [NSArray arrayWithObjects:(id)[UIColor orangeColor].CGColor, (id)[UIColor whiteColor].CGColor, nil];
-        scrollView.layer.mask = l;
-        */
-        
-        CAGradientLayer *bgLayer = [DMCircularScrollView blueGradient];
-        scrollView.frame = scrollView.bounds;
-        [scrollView.layer insertSublayer:bgLayer atIndex:0];
-        
         self.pageWidth = 50;
         self.currentPageIndex = 0;
         self.allowTapToChangePage = YES;
@@ -91,39 +78,12 @@
     return self;
 }
 
-
- //Blue gradient background
- + (CAGradientLayer*) blueGradient {
- 
- UIColor *colorOne = [UIColor whiteColor];
- UIColor *colorTwo = [UIColor yellowColor];
- 
- NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
- NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
- NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
- 
- NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
- 
- CAGradientLayer *headerLayer = [CAGradientLayer layer];
- headerLayer.colors = colors;
- headerLayer.locations = locations;
- 
- [headerLayer setStartPoint:CGPointMake(0.0, 0.5)];
- [headerLayer setEndPoint:CGPointMake(1.0, 0.5)];
- //[headerLayer setShadowRadius:50];
- 
- return headerLayer;
- 
- }
-
-
 - (UIView *) viewAtLocation:(CGPoint) touchLocation {
     for (UIView *subView in scrollView.subviews)
         if (CGRectContainsPoint(subView.frame, touchLocation))
             return subView;
     return nil;
 }
-
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent*)event {
     UIView* child = nil;
@@ -132,7 +92,6 @@
         return scrollView;
     return child;
 }
-
 
 - (void) setAllowTapToChangePage:(BOOL)nallowTapToChangePage {
     allowTapToChangePage = nallowTapToChangePage;

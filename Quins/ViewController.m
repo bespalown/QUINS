@@ -124,6 +124,11 @@
     };
     
     [self.view addSubview:threePageScrollView];
+/*
+    CAGradientLayer *bgLayer = [ViewController blueGradient];
+    bgLayer.frame = threePageScrollView.bounds;
+    [threePageScrollView.layer insertSublayer:bgLayer atIndex:0];
+ */
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,16 +157,19 @@
         [btn setTitle:[NSString stringWithFormat:@"%@", weight.name] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn setFrame:back_view.bounds];
-        //[btn setBackgroundColor:[UIColor blackColor]];
+        [btn setBackgroundColor:[UIColor clearColor]];
         //[btn addTarget:self action:@selector(btn_tapButton:) forControlEvents:UIControlEventTouchUpInside];
         [btn setUserInteractionEnabled:YES];
         //[btn setBackgroundColor:[ViewController randomColor]];
         //back_view.backgroundColor = [DMViewController randomColor];
         
-
-        
         [back_view addSubview:btn];
         [views_list addObject: back_view];
+        
+        
+        
+
+        
     }
     return views_list;
 }
@@ -169,8 +177,8 @@
 //Blue gradient background
 + (CAGradientLayer*) blueGradient {
     
-    UIColor *colorOne = [UIColor colorWithRed:(120/255.0) green:(135/255.0) blue:(150/255.0) alpha:1.0];
-    UIColor *colorTwo = [UIColor colorWithRed:(57/255.0)  green:(79/255.0)  blue:(96/255.0)  alpha:1.0];
+    UIColor *colorOne = [UIColor whiteColor];
+    UIColor *colorTwo = [UIColor yellowColor];
     
     NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
     NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
@@ -180,14 +188,13 @@
     
     CAGradientLayer *headerLayer = [CAGradientLayer layer];
     headerLayer.colors = colors;
-    //headerLayer.locations = locations;
+    headerLayer.locations = locations;
     
-    //[headerLayer setStartPoint:CGPointMake(0.0, 0.5)];
-    //[headerLayer setEndPoint:CGPointMake(1.0, 0.5)];
+    [headerLayer setStartPoint:CGPointMake(0.0, 0.5)];
+    [headerLayer setEndPoint:CGPointMake(1.0, 0.5)];
     //[headerLayer setShadowRadius:50];
     
     return headerLayer;
-    
 }
 
 - (void) btn_tapButton:(UIButton *) btn {
@@ -257,6 +264,9 @@
     
     [_pickerView reloadAllComponents];
     [_pickerView selectRow:dataPicker.count-1 inComponent:0 animated:YES];
+    
+    [_dialView setCurrentValue:theFloat animated:YES];
+    [_dialViewPound setCurrentValue:theFloat animated:YES];
     
     if (theFloat > 50) {
         [_dialView setDialRangeFrom:theFloat - 50 to:theFloat + 50];
